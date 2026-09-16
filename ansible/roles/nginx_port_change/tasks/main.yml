@@ -1,0 +1,14 @@
+---
+- name: Change Nginx port from 80 to 81
+  replace:
+    path: /etc/nginx/sites-available/default
+    regexp: 'listen 80 default_server;'
+    replace: 'listen 81 default_server;'
+  notify: Restart nginx
+
+- name: Change Nginx IPv6 port from 80 to 81
+  replace:
+    path: /etc/nginx/sites-available/default
+    regexp: 'listen \[::\]:80 default_server;'
+    replace: 'listen [::]:81 default_server;'
+  notify: Restart nginx

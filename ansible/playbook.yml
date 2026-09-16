@@ -1,0 +1,10 @@
+---
+- name: Setup EC2 with Docker, Nginx, Docker Compose
+  hosts: web
+  become: yes
+
+  roles:
+    - docker
+    - nginx
+    - docker_compose
+    - nginx_port_change
